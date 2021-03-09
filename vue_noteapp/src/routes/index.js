@@ -6,7 +6,13 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 export default new VueRouter({
+  // 배포시 history 추가 작업 필요함,(VueRouter 공식문서 참고)
+  mode: "history",
   routes: [
+    {
+      path: "/",
+      redirect: "/login",
+    },
     {
       path: "/login",
       component: () => import("@/views/LoginPage.vue"),
@@ -14,6 +20,10 @@ export default new VueRouter({
     {
       path: "/signup",
       component: () => import("@/views/SignUpPage.vue"),
+    },
+    {
+      path: "*",
+      component: () => import("@/views/NotFoundPage.vue"),
     },
   ],
 });
