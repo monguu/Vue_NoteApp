@@ -9,22 +9,49 @@
       <input id="password" type="text" v-model="password" />
     </div>
     <div>
-      <button type="submit">Login</button>
+      <button v-bind:disabled="!isUserValid || !password" type="submit">
+        Login
+      </button>
     </div>
+    <p>{{ logmessage }}</p>
   </form>
 </template>
 
 <script>
+import { loginUser } from "@/api/index.js";
+import { validateEmail } from "@/utils/validation.js";
 export default {
   data() {
     return {
       username: "",
       password: "",
+      logmessage: "",
     };
   },
+  computed: {
+    isUserValid() {
+      return validateEmail(this.username);
+    },
+  },
   methods: {
-    submitForm() {
-      console.log("submitForm");
+    async submitForm() {
+      try {
+        const userData = {
+          username: this.username,
+          password: this.password,
+        };
+        const { data } = await loginUser(userData);
+        console.log(data);
+        this.logmessage = `${data.user.username} 님 환영합니다.`;
+      } catch (err) {
+        this.logmessage = `${err.response.data}`;
+      } finally {
+        this.initForm();
+      }
+    },
+    initForm() {
+      this.username = "";
+      this.password = "";
     },
   },
 };

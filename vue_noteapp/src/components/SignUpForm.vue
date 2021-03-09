@@ -12,13 +12,19 @@
       <label for="nickname">Name : </label>
       <input id="nickname" type="text" v-model="nickname" />
     </div>
-    <button type="submit">Sign Up</button>
+    <button
+      v-bind:disabled="!isSignUpValid || !password || !nickname"
+      type="submit"
+    >
+      Sign Up
+    </button>
     <p>{{ logView }}</p>
   </form>
 </template>
 
 <script>
 import { signupUser } from "@/api/index.js";
+import { validateEmail } from "@/utils/validation.js";
 export default {
   data() {
     return {
@@ -27,6 +33,11 @@ export default {
       nickname: "",
       logView: "",
     };
+  },
+  computed: {
+    isSignUpValid() {
+      return validateEmail(this.username);
+    },
   },
   methods: {
     async submitForm() {
