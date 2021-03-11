@@ -21,9 +21,13 @@ function signupUser(userData) {
 function loginUser(userData) {
   return instance.post("login", userData);
 }
-
+// 게시판 생성 api
 function getPost() {
   return instance.get("posts");
 }
+// 게시물 생성
+function createPost(addPostData) {
+  return instance.post("posts", addPostData);
+}
 
-export { signupUser, loginUser, getPost };
+export { signupUser, loginUser, getPost, createPost };

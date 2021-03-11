@@ -9,6 +9,11 @@
         v-bind:postItem="postItem"
       ></post-item>
     </ul>
+    <div>
+      <router-link to="/add" class="add_button">
+        <i class="ion-md-add"></i>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -42,4 +47,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+ion-icon {
+  font-size: 20px;
+}
+.add_button {
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  border: 3px solid rgb(13, 236, 188);
+}
+</style>
