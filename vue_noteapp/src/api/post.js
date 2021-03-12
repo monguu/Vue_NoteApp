@@ -11,5 +11,13 @@ function createPost(addPostData) {
 function deletePost(deletePostData) {
   return basePostInstance.delete(deletePostData);
 }
+//한개 게시물 조회 key 값을 보내기 때문에  get api를 사용,
+function editedPost(editPost) {
+  return basePostInstance.get(editPost);
+}
 
-export { getPost, createPost, deletePost };
+function editSavePost(id, Data) {
+  return basePostInstance.put(id, Data);
+}
+
+export { getPost, createPost, deletePost, editedPost, editSavePost };

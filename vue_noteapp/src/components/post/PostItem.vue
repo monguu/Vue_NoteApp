@@ -9,7 +9,7 @@
           {{ postItem.contents }}
         </div>
         <div class="post_time">
-          {{ postItem.createdAt }}
+          {{ postItem.createdAt | formatDate }}
           <i class="fas fa-plus" v-on:click="Plusbtn"></i>
           <i class="fas fa-trash" v-on:click="deletebtn"></i>
         </div>
@@ -27,6 +27,11 @@ export default {
       required: true,
     },
   },
+  // filters: {
+  //   formatDate(value) {
+  //     return new Date(value);
+  //   },
+  // },
   methods: {
     Plusbtn() {
       this.$router.push(`/post/${this.postItem._id}`);

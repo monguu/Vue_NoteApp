@@ -10,12 +10,6 @@ export default {
   components: {
     PostEditForm,
   },
-  props: {
-    postItem: {
-      type: Object,
-      required: true,
-    },
-  },
 };
 </script>
 PostEditForm
