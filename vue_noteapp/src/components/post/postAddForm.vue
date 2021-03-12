@@ -17,16 +17,14 @@
             rows="5"
           />
           <p v-if="!isContentVaild" class="vaild-text warning">
-            내용은 50자 내로만 입력해주세요.
+            내용은 50자 내로 입력해주세요.
           </p>
         </div>
         <div>
           <label for="">태그등록: </label>
           <input type="text" />
         </div>
-        <button type="submit" class="add-btn">
-          게시물 등록
-        </button>
+        <button type="submit" class="add-btn">게시물 등록</button>
         <h4>
           {{ failedLogMsg }}
         </h4>
@@ -36,7 +34,7 @@
 </template>
 
 <script>
-import { createPost } from "@/api/index.js";
+import { createPost } from "@/api/post.js";
 export default {
   data() {
     return {

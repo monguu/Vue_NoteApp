@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { loginUser } from "@/api/index.js";
+import { loginUser } from "@/api/auth.js";
 import {
   saveAuthToCookie,
   saveUserToCookie,
@@ -14,11 +14,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username: getUserFromCookie() || "",
+    token: getAuthFromCookie() || "",
     // password: "",
     // nickname: "",
     // logView: "",
     // logmessage: "",
-    token: getAuthFromCookie() || "",
   },
   getters: {
     isLogin(state) {
@@ -32,6 +32,7 @@ export default new Vuex.Store({
     logoutUser(state) {
       state.username = "";
       deleteCookie(state);
+      // 쿠키값 삭제 구문추가 예정
     },
     getToken(state, token) {
       state.token = token;

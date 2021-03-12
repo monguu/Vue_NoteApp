@@ -1,33 +1,23 @@
 import axios from "axios";
 // import store from "@/store/index.js";
 import { getInterceptor } from "@/api/common/interceptor.js";
+// import { signupUser, loginUser } from "@/api/auth.js";
 
-function initInstance() {
-  const instance = axios.create({
+function createInstance() {
+  return axios.create({
     baseURL: process.env.VUE_APP_API_URL,
+  });
+}
+
+function initInstance(url) {
+  const instance = axios.create({
+    baseURL: `${process.env.VUE_APP_API_URL}${url}`,
     // headers: {
     //   Authorization: store.state.token,
     // },
   });
   return getInterceptor(instance);
 }
-const instance = initInstance();
 
-// signup API
-function signupUser(userData) {
-  return instance.post("signup", userData);
-}
-// login API
-function loginUser(userData) {
-  return instance.post("login", userData);
-}
-// 게시판 생성 api
-function getPost() {
-  return instance.get("posts");
-}
-// 게시물 생성
-function createPost(addPostData) {
-  return instance.post("posts", addPostData);
-}
-
-export { signupUser, loginUser, getPost, createPost };
+export const instance = createInstance();
+export const basePostInstance = initInstance("posts");

@@ -7,6 +7,7 @@
         v-for="postItem in postItems"
         :key="postItem._id"
         v-bind:postItem="postItem"
+        v-on:deleteText="getNotes"
       ></post-item>
     </ul>
     <div>
@@ -20,7 +21,7 @@
 <script>
 import LoadingSpinner from "@/components/common/Spinner.vue";
 import PostItem from "@/components/post/PostItem.vue";
-import { getPost } from "@/api/index.js";
+import { getPost } from "@/api/post.js";
 export default {
   components: {
     PostItem,

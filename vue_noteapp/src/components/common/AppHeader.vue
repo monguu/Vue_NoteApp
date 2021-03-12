@@ -7,7 +7,7 @@
       <div class="headerlog">
         <template v-if="isLogin">
           <span class="HeaderUserName">{{ $store.state.username }}</span>
-          <a href="/" v-on:click="isLogout">로그아웃</a>
+          <button v-on:click="isLogout">로그아웃</button>
         </template>
         <template v-else>
           <router-link to="/login">로그인</router-link> |
@@ -28,7 +28,7 @@ export default {
   methods: {
     isLogout() {
       this.$store.commit("logoutUser");
-      this.$router.push("/");
+      this.$router.push("/login");
     },
   },
 };

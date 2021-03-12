@@ -33,5 +33,9 @@ export default new VueRouter({
       path: "/add",
       component: () => import("@/views/AddPage.vue"),
     },
+    {
+      path: "/post/:id",
+      component: () => import("@/views/editPage.vue"),
+    },
   ],
 });

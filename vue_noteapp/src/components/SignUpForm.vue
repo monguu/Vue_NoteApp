@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { signupUser } from "@/api/index.js";
+import { signupUser } from "@/api/auth.js";
 import { validateEmail } from "@/utils/validation.js";
 export default {
   data() {
