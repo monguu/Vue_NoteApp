@@ -1,8 +1,8 @@
 function saveAuthToCookie(value) {
-  document.cookie = `til_auth=${value}`;
+  document.cookie = `auth=${value}`;
 }
 function saveUserToCookie(value) {
-  document.cookie = `til_user=${value}`;
+  document.cookie = `user=${value}`;
 }
 function getAuthFromCookie() {
   return document.cookie.replace(

@@ -2,7 +2,9 @@
   <header class="header">
     <div>
       <div class="logo">
-        <h1 class="logotext"><a href="/">mong crud</a></h1>
+        <h1 class="logotext">
+          <router-link :to="logoclick">mong crud</router-link>
+        </h1>
       </div>
       <div class="headerlog">
         <template v-if="isLogin">
@@ -19,15 +21,23 @@
 </template>
 
 <script>
+import { deleteCookie } from "@/utils/cookies.js";
+// import store from "@/store/index.js";
 export default {
   computed: {
     isLogin() {
       return this.$store.getters.isLogin;
     },
+    logoclick() {
+      return this.$store.getters.isLogin ? "/main" : "/login";
+    },
   },
   methods: {
     isLogout() {
       this.$store.commit("logoutUser");
+      this.$store.commit("deleteToken");
+      deleteCookie("auth");
+      deleteCookie("user");
       this.$router.push("/login");
     },
   },

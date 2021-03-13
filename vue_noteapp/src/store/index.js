@@ -6,7 +6,6 @@ import {
   saveUserToCookie,
   getUserFromCookie,
   getAuthFromCookie,
-  deleteCookie,
 } from "@/utils/cookies.js";
 
 Vue.use(Vuex);
@@ -31,11 +30,13 @@ export default new Vuex.Store({
     },
     logoutUser(state) {
       state.username = "";
-      deleteCookie(state);
-      // 쿠키값 삭제 구문추가 예정
     },
     getToken(state, token) {
       state.token = token;
+    },
+    // 쿠키값 삭제 구문추가 예정
+    deleteToken(state) {
+      state.token = "";
     },
   },
   actions: {
