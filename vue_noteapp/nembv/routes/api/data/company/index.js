@@ -1,7 +1,10 @@
 const router = require("express").Router();
-const ctrls = require("./ctrls");
+const ctrl = require("./ctrls");
 
-router.get("/plz", ctrls.plz);
+router.get("/", ctrl.list);
+router.post("/", ctrl.add);
+router.put("/", ctrl.mod);
+router.delete("/", ctrl.del);
 
 router.all("*", (req, res) => {
   res.status(404).send({ success: false, msg: `unknown uri ${req.path}` });

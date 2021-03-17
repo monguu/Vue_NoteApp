@@ -41,4 +41,30 @@ app.use(function(err, req, res, next) {
   next(err);
 });
 
+const mongoose = require("mongoose");
+const cfg = require("./cfg/cfg");
+if (!cfg) {
+  console.error("./cfg/cfg.js file not exists");
+  process.exit(1);
+}
+mongoose.connect(cfg.db.url, err => {
+  if (!err) {
+    console.log("mongoose connected! ");
+  }
+});
+// const url =
+//   "mongodb+srv://kwongu14:123qwe@testreact.qycaw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// mongoose.connect(url, err => {
+//   if (err) return console.log(err);
+//   console.log("mongoose connected");
+// });
+
+const pg = require("./playGround");
+
+mongoose.connect(cfg.db.url, err => {
+  if (err) return console.error(err);
+  console.log("mongoose connected");
+  pg.test.model();
+});
+
 module.exports = app;
